@@ -75,7 +75,7 @@ const submitBtn = document.getElementById("submit-btn");
 const validateBtn = document.getElementById("validate-btn");
 const pushCrmBtn = document.getElementById("push-crm-btn");
 const downloadResultsBtn = document.getElementById("download-results-btn");
-const templateBtn = document.getElementById("download-template-btn");
+const importCrmBtn = document.getElementById("import-crm-btn");
 
 init();
 
@@ -89,7 +89,11 @@ function init() {
   submitBtn.addEventListener("click", submitJob);
   pushCrmBtn.addEventListener("click", simulateCrmPush);
   downloadResultsBtn.addEventListener("click", downloadResultsCsv);
-  templateBtn.addEventListener("click", downloadTemplate);
+  if (importCrmBtn) {
+    importCrmBtn.addEventListener("click", () => {
+      showAlert("CRM import is coming soon. Please use CSV import for now.", "warning");
+    });
+  }
   renderReview();
 }
 
