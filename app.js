@@ -404,16 +404,6 @@ function renderResults() {
   });
 
   const micrositeCount = state.results.filter((item) => item.microsite_generated).length;
-  const skippedCount = state.results.length - micrositeCount;
-  const webhookInfo = state.webhookResponse
-    ? `<p><strong>Webhook response:</strong> ${formatWebhookSummary(state.webhookResponse)}</p>`
-    : "";
-  const outputFileInfo = state.outputFile
-    ? `<p><strong>Webhook output file:</strong> ${state.outputFile.filename}</p>`
-    : "";
-  const outputSourceInfo = state.outputSource
-    ? `<p><strong>Output source:</strong> ${state.outputSource}</p>`
-    : "";
 
   if (resultsLeadMessage) {
     resultsLeadMessage.classList.remove("hidden");
@@ -421,12 +411,7 @@ function renderResults() {
   }
 
   resultsSummary.innerHTML = `
-    <p><strong>Rows processed:</strong> ${state.results.length}</p>
     <p><strong>Leads Found:</strong> ${micrositeCount}</p>
-    <p><strong>Skipped:</strong> ${skippedCount}</p>
-    ${webhookInfo}
-    ${outputFileInfo}
-    ${outputSourceInfo}
   `;
 }
 
