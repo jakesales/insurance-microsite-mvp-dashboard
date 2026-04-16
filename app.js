@@ -71,6 +71,7 @@ const jobPanel = document.getElementById("job-panel");
 const jobStatusCard = document.getElementById("job-status-card");
 const resultsTableBody = document.querySelector("#results-table tbody");
 const resultsSummary = document.getElementById("results-summary");
+const resultsLeadMessage = document.getElementById("results-lead-message");
 const submitBtn = document.getElementById("submit-btn");
 const validateBtn = document.getElementById("validate-btn");
 const pushCrmBtn = document.getElementById("push-crm-btn");
@@ -413,9 +414,15 @@ function renderResults() {
   const outputSourceInfo = state.outputSource
     ? `<p><strong>Output source:</strong> ${state.outputSource}</p>`
     : "";
+
+  if (resultsLeadMessage) {
+    resultsLeadMessage.classList.remove("hidden");
+    resultsLeadMessage.textContent = `We found ${micrositeCount} lead${micrositeCount === 1 ? "" : "s"} from your customer database and created a personalized microsite for each.`;
+  }
+
   resultsSummary.innerHTML = `
     <p><strong>Rows processed:</strong> ${state.results.length}</p>
-    <p><strong>Microsites generated:</strong> ${micrositeCount}</p>
+    <p><strong>Leads Found:</strong> ${micrositeCount}</p>
     <p><strong>Skipped:</strong> ${skippedCount}</p>
     ${webhookInfo}
     ${outputFileInfo}
